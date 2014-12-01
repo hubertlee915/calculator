@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+    var usrinput:String = ""
     
     @IBOutlet weak var expressionField: UITextField!
     
@@ -18,51 +18,80 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func btnadd(sender: AnyObject) {
-    }
-    
-    @IBAction func btnsubtract(sender: AnyObject) {
-    }
-    
-    
-    @IBAction func btnmultiply(sender: AnyObject) {
-    }
-    
-    @IBAction func btndivide(sender: AnyObject) {
-    }
     
     @IBOutlet weak var resultLabel: UILabel!
     
-    @IBAction func btn1(sender: AnyObject) {
+    @IBAction func numberPressed(sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            usrinput += "0"
+        case 1:
+            usrinput += "1"
+        case 2:
+            usrinput += "2"
+        case 3:
+            usrinput += "3"
+        case 4:
+            usrinput += "4"
+        case 5:
+            usrinput += "5"
+        case 6:
+            usrinput += "6"
+        case 7:
+            usrinput += "7"
+        case 8:
+            usrinput += "8"
+        case 9:
+            usrinput += "9"
+        default:
+            println("inputError")
+        }
     }
     
-    @IBAction func btn2(sender: AnyObject) {
+    @IBAction func notationPressed(sender: UIButton) {
+        switch sender.tag {
+        case 10:
+            usrinput += "+"
+        case 11:
+            usrinput += "-"
+        case 12:
+            usrinput += "*"
+        case 13:
+            usrinput += "/"
+        default:
+            println("inputError")
+        }
     }
     
-    @IBAction func btn3(sender: AnyObject) {
+    
+
+    
+    func isNumber(c:String)->Bool {
+        if c >= "0" && c <= "9" {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
-    @IBAction func btn4(sender: AnyObject) {
+    func isChar(c:String)->Bool {
+        if c >= "a" && c <= "z" {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
-    @IBAction func btn5(sender: AnyObject) {
+    func isNotation(c:String)->Bool {
+        if c == "+" || c == "-" || c == "*" || c == "/" {
+            return true
+        }
+        else {
+            return false
+        }
     }
-    
-    @IBAction func btn6(sender: AnyObject) {
-    }
-    
-    @IBAction func btn7(sender: AnyObject) {
-    }
-    
-    @IBAction func btn8(sender: AnyObject) {
-    }
-    
-    @IBAction func btn9(sender: AnyObject) {
-    }
-    
-    @IBAction func btn0(sender: AnyObject) {
-    }
-    
 
     
     
