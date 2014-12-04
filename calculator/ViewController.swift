@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBAction func requestResult(sender: AnyObject) {
         println(usrinput)
-        resultLabel.text = usrinput
+        resultLabel.text = doCal(usrinput)
     }
     
     @IBOutlet weak var resultLabel: UILabel!

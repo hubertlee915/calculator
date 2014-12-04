@@ -52,7 +52,7 @@ func doMutiplyandDivide(arrNumber: [Double], arrOperator: [String])->([Double], 
                     didMDArrNumber.removeAtIndex(i)
                     removeMDOperator.removeAtIndex(i)
                     didMDArrNumber.insert(temp1, atIndex: i)
-                    i = 0
+                    i = -1
                 }
                 else {
                     println("错误！被除数不能为0！")
@@ -65,14 +65,49 @@ func doMutiplyandDivide(arrNumber: [Double], arrOperator: [String])->([Double], 
                 didMDArrNumber.removeAtIndex(i)
                 didMDArrNumber.insert(temp2, atIndex: i)
                 removeMDOperator.removeAtIndex(i)
-                i = 0
+                i = -1
             }
         }
     }
     return (didMDArrNumber, removeMDOperator)
 }
 
+//加减法运算
+func doAddandSubtract(arr3:[Double], arr4:[String])->Double {
+    var arr1 = arr3
+    var arr2 = arr4
+    while !arr2.isEmpty {
+        if arr2[0] == "+" {
+            var temp1 = arr1[0] + arr1[1]
+            arr1.removeAtIndex(0)
+            arr1.removeAtIndex(0)
+            arr2.removeAtIndex(0)
+            arr1.insert(temp1, atIndex: 0)
+            
+        }
+        else if arr2[0] == "-" {
+            var temp2 = arr1[0] - arr1[1]
+            arr1.removeAtIndex(0)
+            arr1.removeAtIndex(0)
+            arr2.removeAtIndex(0)
+            arr1.insert(temp2, atIndex: 0)
+        }
+        else {
+            println("错误，包含+-以外的运算符")
+            break
+        }
+    }
+    return arr1[0]
+}
 
+func doCal(_usrinput:String)->NSString {
+    var usrinput = _usrinput
+    var transformUsrInput = transformUsrinput(usrinput)
+    var didMD = doMutiplyandDivide(transformUsrInput.0, transformUsrInput.1)
+    var doubleResult =  doAddandSubtract(didMD.0, didMD.1)
+    var strResult:NSString = NSString(format: "结果是:%f", doubleResult)
+    return strResult
+}
 
 
 //判断数字
